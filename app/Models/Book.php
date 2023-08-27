@@ -14,6 +14,7 @@ class Book extends Model
         'published_at',
         'age',
         'author_id',
-        'category_id'
+        'category_id',
+        'user_id'
     ];
 }

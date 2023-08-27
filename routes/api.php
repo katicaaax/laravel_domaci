@@ -16,14 +16,16 @@ use App\Http\Controllers\API\CategoryController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+//ne treba autentifikacija za login i register
 Route::post('/login',[AuthController::class,'login']);
 Route::post('/register',[AuthController::class,'register']);
 
+//ppziva se middleware za proveru autentifikacije
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('authors', [AuthorController::class, 'index']);
-    Route::post('authors', [AuthorController::class, 'store']);
+    Route::post('authors', [AuthorController::class, 'store']); //done
     Route::get('authors/{id}', [AuthorController::class, 'show']);
-    Route::put('authors/{id}', [AuthorController::class, 'update']);
+    Route::put('authors/{id}', [AuthorController::class, 'update']); //done
     Route::delete('authors/{id}', [AuthorController::class, 'delete']);
 
     Route::get('categories', [CategoryController::class, 'index']);

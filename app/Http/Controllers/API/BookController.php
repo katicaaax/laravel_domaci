@@ -9,7 +9,7 @@ use App\Http\Requests\BookStoreRequest;
 class BookController extends Controller
 {
     public function index() {
-        return response()->json(['data' => Book::with(['user', 'author', 'category'])->get()]);
+        return response()->json(['data' => Book::with(['user', 'author', 'category'])->get()]); //vraca za svaku knjigu usera, autora i kategoriju koje postoje u bazi
     }
 
     public function show($id) {
@@ -20,7 +20,7 @@ class BookController extends Controller
     }
 
     public function store(BookStoreRequest $request) {
-        $book = Book::create($request->validated());
+        $book = Book::create($request->validated()); //samo ono sto je validirano
 
         return response()->json(['data' => $book], 200);
     }

@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function register(RegisterRequest $request){
+    public function register(RegisterRequest $request){ //kreiranje novog usera
         $user = User::create($request->validated());
         $token = $user->createToken('auth_token')->plainTextToken;
-        return response()->json(['data'=>$user,'excess_token'=>$token]);
+        return response()->json(['data'=>$user,'access_token'=>$token]);
     }
 
     public function login(LoginRequest $request) {
@@ -28,6 +28,6 @@ class AuthController extends Controller
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        return response()->json(['message' => "Welcome {$user->name}", 'auth_token' => $token]);
+        return response()->json(['message' => "Welcome {$user->name}", 'access_token' => $token]);
     }
 }

@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 class AuthController extends Controller
 {
@@ -21,7 +24,7 @@ class AuthController extends Controller
         if(!Auth::attempt($credentials))
             return response()->json(['message' => 'Unauthorized'], 401);
 
-        $user = User::where(['email', $credentials['email']])->firstOrFail();
+        $user = User::where('email', $credentials['email'])->firstOrFail();
 
         $token = $user->createToken('auth_token')->plainTextToken;
 

@@ -13,8 +13,8 @@ use App\Http\Controllers\API\AuthController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
+Route::post('/login',[AuthController::class,'login']);
+Route::post('/register',[AuthController::class,'register']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::post('/login',[AuthController::class,'login']);
-    Route::post('/register',[AuthController::class,'register']);
+    
 });

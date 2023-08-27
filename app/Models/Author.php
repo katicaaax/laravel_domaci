@@ -15,7 +15,7 @@ class Author extends Model
         'surname'
     ];
 
-    public function books() {
+    public function books() { //trazim u bazi sve knjige gde je autor_id isti kao ta odredjena instanca autora
         return $this->hasMany(Book::class);
     }
 }

@@ -19,15 +19,15 @@ class Book extends Model
     ];
 
     public function user() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class); //pretraga usera po id
     }
 
     public function author() {
-        return $this->belongsTo(Author::class);
+        return $this->belongsTo(Author::class); //pretraga autora
     }
 
     public function category() {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class); //pretraga kategorija
     }
 }
 

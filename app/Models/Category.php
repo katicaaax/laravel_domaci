@@ -15,6 +15,6 @@ class Category extends Model
     ];
 
     public function books() {
-        $this->hasMany(Book::class);
+        $this->hasMany(Book::class); //vraca knjige sa tom odredjenom kategorijom
     }
 }

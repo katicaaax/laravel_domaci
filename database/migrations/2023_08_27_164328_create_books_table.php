@@ -19,6 +19,14 @@ return new class extends Migration
             $table->unsignedBigInteger('author_id');
             $table->unsignedBigInteger('category_id');
             $table->timestamps();
+            $table->foreign('author_id')
+                ->references('id')
+                ->on('authors')
+                ->cascadeOnDelete(); //kada obrisemo autora, da obrise i referencu u Books tabeli
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories')
+                ->cascadeOnDelete(); //kada obrisemo kategoriju, da obrise i referencu u Books tabeli
         });
     }
 
